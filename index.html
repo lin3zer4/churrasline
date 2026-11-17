@@ -93,6 +93,7 @@
   .av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; color: #fff; flex: none; background: var(--blue); }
   .gname { font-weight: 500; min-width: 0; overflow-wrap: anywhere; line-height: 1.15; }
   .gname small { display: block; font-size: .7rem; color: var(--mid); font-weight: 400; }
+  .gname small.ok { color: #2e7d4f; font-weight: 600; }
   .cat { margin-top: 16px; } .cat:first-child { margin-top: 0; }
   .cat h4 { margin: 0 0 4px; display: flex; justify-content: space-between; gap: 8px; font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; }
   .cat h4 span:last-child { opacity: .7; font-weight: 500; }
@@ -239,9 +240,9 @@ var PESSOAS = [
   { nome: "Thaina", carne: true, paga: true },
   { nome: "Julio Kevyn", carne: true, paga: true },
   { nome: "Amanda", carne: true, paga: true },
-  { nome: "Vitória", carne: false, paga: true },
-  { nome: "Victor", carne: true, paga: true },
-  { nome: "Ana", carne: true, paga: true },
+  { nome: "Vitória", carne: false, paga: true, pago: true },
+  { nome: "Victor", carne: true, paga: true, pago: true },
+  { nome: "Ana", carne: true, paga: true, pago: true },
   { nome: "Lari Carielo", carne: true, paga: true },
   { nome: "Jailson", carne: true, paga: true },
   { nome: "Giulia", carne: true, paga: true }
@@ -313,6 +314,7 @@ if (CONFIG.valorSemCarne) valorSemCarne = CONFIG.valorSemCarne;
     av.style.background = cor(p.nome);
     var nm = mk("span", "gname", p.nome);
     if (!p.carne) nm.appendChild(mk("small", "", "sem carne"));
+    if (p.pago) nm.appendChild(mk("small", "ok", "pago"));
     li.appendChild(av); li.appendChild(nm); ul.appendChild(li);
   });
 })();
